@@ -1,0 +1,64 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <title>Otopark Takip Sistemi</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background-color: #f4f4f4; }
+        h1 { color: #333; }
+        .form-container { background: white; padding: 20px; border-radius: 8px; max-width: 500px; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        label { display: block; margin-top: 10px; }
+        input[type="text"], input[type="time"] { width: 100%; padding: 8px; margin-top: 5px; }
+        button { margin-top: 15px; padding: 10px 20px; background-color: #f44336; color: white; border: none; border-radius: 4px; cursor: pointer; }
+        button:hover { background-color: #d32f2f; }
+        .result { margin-top: 20px; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Otopark Takip Sistemi</h1>
+    <div class="form-container">
+        <label for="plate">Araç Plakası:</label>
+        <input type="text" id="plate" placeholder="34ABC123">
+
+        <label for="entry">Giriş Saati:</label>
+        <input type="time" id="entry">
+
+        <label for="exit">Çıkış Saati:</label>
+        <input type="time" id="exit">
+
+        <button onclick="calculateFee()">Ücreti Hesapla</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculateFee() {
+            const entry = document.getElementById('entry').value;
+            const exit = document.getElementById('exit').value;
+            const plate = document.getElementById('plate').value;
+            const resultDiv = document.getElementById('result');
+
+            if (!entry || !exit || !plate) {
+                resultDiv.innerHTML = "Lütfen tüm alanları doldurun.";
+                return;
+            }
+
+            const entryTime = new Date("1970-01-01T" + entry + ":00");
+            const exitTime = new Date("1970-01-01T" + exit + ":00");
+
+            let diffMs = exitTime - entryTime;
+            if (diffMs < 0) {
+                resultDiv.innerHTML = "Çıkış saati giriş saatinden önce olamaz.";
+                return;
+            }
+
+            const diffHours = Math.ceil(diffMs / (1000 * 60 * 60));
+            const fee = diffHours * 20;
+
+            resultDiv.innerHTML = `${plate} plakalı araç için toplam süre: ${diffHours} saat<br>Ödenecek ücret: ${fee} TL`;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Blog Sayfası</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Süleyman'ın Blog Sayfası </h1>
+      <nav class="nav">
+        <a href="#bolumler">Bölümler</a>
+        <a href="#yorumlar">Tepkileriniz / Yorumlarınız</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="bolumler" class="grid container">
+      <!-- Üst satır -->
+      <article class="card">
+        <h2>Program</h2>
+        <p>Yazılım alanında yapmış olduğum (python ile) programlar.</p>
+        <a class="btn" href="yazilimlar.html">Bu sayfaya git</a>
+      </article>
+
+      <article class="card">
+        <h2>Kali Linux</h2>
+        <p>Kendi yapmış olduğum tool program içerikleri.</p>
+        <a class="btn" href="kali.html">Bu sayfaya git</a>
+      </article>
+
+      <!-- Alt satır -->
+      <article class="card">
+        <h2>Otobiyografi</h2>
+        <p>Kendi hayatımı anlattığım yazılı, fotoğraflı ve videolu kesitler-metin yerleri.</p>
+        <a class="btn" href="otobiyografi.html">Bu sayfaya git</a>
+      </article>
+
+      <article class="card">
+        <h2>Website Örnekleri</h2>
+        <p>Yapmış olduğum web siteleri.</p>
+        <a class="btn" href="foto-web.html">Bu sayfaya git</a>
+      </article>
+    </section>
+
+    <section id="yorumlar" class="comments container">
+      <h2>Tepkileriniz / Yorumlarınız</h2>
+      <form id="commentForm" class="comment-form">
+        <label for="name">Adınız</label>
+        <input id="name" name="name" type="text" placeholder="Adınızı yazın" required />
+
+        <label for="comment">Yorumunuz</label>
+        <textarea id="comment" name="comment" rows="4" placeholder="Yorumunuzu yazın" required></textarea>
+
+        <button type="submit" class="btn">Gönder</button>
+      </form>
+
+      <ul id="commentList" class="comment-list" aria-live="polite"></ul>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <small>© 2025</small>
+      <small>İnstagram: Tyronista</small>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
